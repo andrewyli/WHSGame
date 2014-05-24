@@ -17,10 +17,10 @@ def removeWhite(image):
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-player_img = pygame.image.load("player.png")
+player_img = pygame.image.load("player1.png")
 background = pygame.image.load("map1.bmp").convert()
 
-p = Player(player_img, 0, 0, [0, 0], 0, 0.1)
+p = Player(player_img, 0, 0, [0, 0], 0, 1)
 
 while True:
     for event in pygame.event.get():
