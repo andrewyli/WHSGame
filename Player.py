@@ -1,3 +1,4 @@
+import math
 import pygame
 from pygame.locals import *
 
@@ -26,17 +27,39 @@ class Player(pygame.sprite.Sprite):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     self.image = pygame.transform.rotate(self.image, -90)
+                    self.direction = (self.direction - 90) % 360
                 if event.key == pygame.K_LEFT:
                     self.image = pygame.transform.rotate(self.image, 90)
-                if event.key == pygame.K_DOWN:
-                    self.dy += 1
+                    self.direction = (self.direction + 90) % 360
                 if event.key == pygame.K_UP:
-                    self.dy += -1
+                    if self.direction == 0:
+                        self.speed[0] = 0
+                        self.speed[1] = -1
+                    if self.direction == 90:
+                        self.speed[0] = 1
+                        self.speed[1] = 0
+                    if self.direction == 180:
+                        self.speed[0] = 0
+                        self.speed[1] = 1
+                    if self.direction == 270:
+                        self.speed[0] = -1
+                        self.speed[1] = 0
+                if event.key == pygame.K_DOWN:
+                    if self.direction == 180:
+                        self.speed[0] = 0
+                        self.speed[1] = -1
+                    if self.direction == 270:
+                        self.speed[0] = 1
+                        self.speed[1] = 0
+                    if self.direction == 0:
+                        self.speed[0] = 0
+                        self.speed[1] = 1
+                    if self.direction == 90:
+                        self.speed[0] = -1
+                        self.speed[1] = 0
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                    self.dy = 0
-                if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
-                    self.dx = 0
+                    self.speed = [0, 0]
 
     def move(self):
-        self.rect = self.rect.move([self.dx, self.dy])
+        self.rect = self.rect.move(self.speed)
