@@ -25,13 +25,14 @@ class Player(pygame.sprite.Sprite):
     def changeSpeed(self):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
+                keys = pygame.key.get_pressed()
+                if keys[pygame.K_RIGHT]:
                     self.image = pygame.transform.rotate(self.image, -90)
                     self.direction = (self.direction + 90) % 360
-                if event.key == pygame.K_LEFT:
+                if keys[pygame.K_LEFT]:
                     self.image = pygame.transform.rotate(self.image, 90)
                     self.direction = (self.direction - 90) % 360
-                if event.key == pygame.K_UP:
+                if keys[pygame.K_UP]:
                     if self.direction == 0:
                         self.speed[0] = 0
                         self.speed[1] = -1
@@ -44,7 +45,7 @@ class Player(pygame.sprite.Sprite):
                     if self.direction == 270:
                         self.speed[0] = -1
                         self.speed[1] = 0
-                if event.key == pygame.K_DOWN:
+                if keys[pygame.K_DOWN]:
                     if self.direction == 180:
                         self.speed[0] = 0
                         self.speed[1] = -1
