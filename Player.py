@@ -27,10 +27,10 @@ class Player(pygame.sprite.Sprite):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     self.image = pygame.transform.rotate(self.image, -90)
-                    self.direction = (self.direction - 90) % 360
+                    self.direction = (self.direction + 90) % 360
                 if event.key == pygame.K_LEFT:
                     self.image = pygame.transform.rotate(self.image, 90)
-                    self.direction = (self.direction + 90) % 360
+                    self.direction = (self.direction - 90) % 360
                 if event.key == pygame.K_UP:
                     if self.direction == 0:
                         self.speed[0] = 0
