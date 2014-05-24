@@ -1,17 +1,20 @@
 import pygame
 from pygame.locals import *
 
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
+
 
 class Player(pygame.sprite.Sprite):
 
-    def __init__(self, image, x, y, dx, dy):
+    def __init__(self, image, x, y, speed, direction):
         pygame.sprite.Sprite.__init__(self)
         self.image = image.convert_alpha()
         self.rect = self.image.get_rect()
         self.xPos = x
         self.yPos = y
-        self.dx = dx
-        self.dy = dy
+        self.direction = direction
+        self.speed = speed
 
     def update(self, surface):
         self.changeSpeed()
@@ -22,17 +25,13 @@ class Player(pygame.sprite.Sprite):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    self.dx = 0.5
-                    print "right"
+                    self.image = pygame.transform.rotate(self.image, -90)
                 if event.key == pygame.K_LEFT:
-                    self.dx = -0.5
-                    print "left"
+                    self.image = pygame.transform.rotate(self.image, 90)
                 if event.key == pygame.K_DOWN:
-                    self.dy = 0.5
-                    print "down"
+                    self.dy += 1
                 if event.key == pygame.K_UP:
-                    self.dy = -0.5
-                    print "up"
+                    self.dy += -1
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                     self.dy = 0

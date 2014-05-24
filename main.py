@@ -20,7 +20,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 player_img = pygame.image.load("player.png")
 background = pygame.image.load("map1.bmp").convert()
 
-p = Player(player_img, 0, 0, 0, 0)
+p = Player(player_img, 0, 0, (0, 0), 0)
 
 while True:
     for event in pygame.event.get():
