@@ -1,0 +1,35 @@
+import pygame
+from pygame.locals import *
+
+
+class Player():
+
+    image = pygame.image.load("player.png")
+    xPos = 0
+    yPos = 0
+
+    def __init__(self, image, x, y):
+        image = image
+        self.xPos = x
+        self.yPos = y
+
+    def update(self):
+        self.move()
+
+    def move(self):
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.moveright()
+                    print "right"
+                if event.key == pygame.K_LEFT:
+                    self.moveleft()
+                    print "left"
+                if event.key == pygame.K_DOWN:
+                    self.movedown()
+                    print "down"
+                if event.key == pygame.K_UP:
+                    self.moveup()
+                    print "up"
+    
+    def moveright()

@@ -1,0 +1,5 @@
+from livewires import games, colour
+
+class Button(games.Sprite):
+    def __init__(self, screen, x, y, image):
+        self.init_sprite(screen = screen, x = x, y = y, image = image)
