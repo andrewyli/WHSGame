@@ -26,9 +26,6 @@ while True:
     for event in pygame.event.get():
         if event.type == QUIT:
             sys.exit()
-        screen.blit(background, (0, 0))
-        p.update()
-        screen.blit(p.image, (p.xPos, p.yPos))
-        pygame.display.update()
-        pygame.display.flip()
-    
+    screen.blit(background, (0, 0))
+    p.update(screen)
+    pygame.display.update()
