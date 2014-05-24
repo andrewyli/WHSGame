@@ -8,7 +8,7 @@ SCREEN_HEIGHT = 480
 
 class Player(pygame.sprite.Sprite):
 
-    def __init__(self, image, x, y, speed, direction):
+    def __init__(self, image, x, y, speed, direction, movespeed):
         pygame.sprite.Sprite.__init__(self)
         self.image = image.convert_alpha()
         self.rect = self.image.get_rect()
@@ -16,7 +16,7 @@ class Player(pygame.sprite.Sprite):
         self.yPos = y
         self.direction = direction
         self.speed = speed
-
+        self.movespeed = movespeed
     def update(self, surface):
         self.changeSpeed()
         self.move()
@@ -35,28 +35,28 @@ class Player(pygame.sprite.Sprite):
                 if keys[pygame.K_UP]:
                     if self.direction == 0:
                         self.speed[0] = 0
-                        self.speed[1] = -1
+                        self.speed[1] = -movespeed
                     if self.direction == 90:
-                        self.speed[0] = 1
+                        self.speed[0] = movespeed
                         self.speed[1] = 0
                     if self.direction == 180:
                         self.speed[0] = 0
-                        self.speed[1] = 1
+                        self.speed[1] = movespeed
                     if self.direction == 270:
-                        self.speed[0] = -1
+                        self.speed[0] = -movespeed
                         self.speed[1] = 0
                 if keys[pygame.K_DOWN]:
                     if self.direction == 180:
                         self.speed[0] = 0
-                        self.speed[1] = -1
+                        self.speed[1] = -movespeed
                     if self.direction == 270:
-                        self.speed[0] = 1
+                        self.speed[0] = movespeed
                         self.speed[1] = 0
                     if self.direction == 0:
                         self.speed[0] = 0
-                        self.speed[1] = 1
+                        self.speed[1] = movespeed
                     if self.direction == 90:
-                        self.speed[0] = -1
+                        self.speed[0] = -movespeed
                         self.speed[1] = 0
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_UP or event.key == pygame.K_DOWN:

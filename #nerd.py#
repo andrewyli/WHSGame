@@ -1,0 +1,5 @@
+import pygame
+from pygame.locals import *
+
+class Nerd(Player):
+    def __init__(self, image, x, y, dx, dy, d2x, )
