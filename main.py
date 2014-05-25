@@ -130,6 +130,13 @@ while True:
         if event.type == QUIT:
             sys.exit()
     screen.blit(background, (0, 0))
-    screen.blit(escobro.image, escobro.rect)
     p.update(screen)
+    e_contact = escobro.update(screen)
+    if e_contact:
+        break
     pygame.display.update()
+
+background = pygame.image.load("end notice.png").convert()
+
+while True:
+    screen.blit(background, (0, 0))

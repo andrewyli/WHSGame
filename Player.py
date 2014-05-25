@@ -57,7 +57,7 @@ class Player(pygame.sprite.Sprite):
         for i in range(10):
             if (self.canMove()):
                 self.rect = self.rect.move(self.speed)
-                pygame.time.delay(10)
+                pygame.time.delay(5)
 
     def canMove(self):
         if (self.direction == 0):
