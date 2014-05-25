@@ -12,8 +12,8 @@ class Nerd(Player):
         self.changeSpeed(event)
         surface.blit(self.image, self.rect)
         if self.visible:
-            if self.cooldown >= 5000:
-                self.cooldown = pygame.time.get_ticks() - self.startCooldown
+            if self.cooldown < 5000:
+                self.cooldown = pygame.time.get_ticks() - self.startCooldown - 5000
         else:
             self.cooldown = 5000 - pygame.time.get_ticks() + self.startCooldown
         if self.cooldown <= 0:
