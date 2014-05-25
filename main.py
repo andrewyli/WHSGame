@@ -3,7 +3,10 @@ from Player import Player
 from Escobro import Escobro
 from nerd import Nerd
 from Jock import Jock
+from Preppy import Prep
 from pygame.locals import *
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
 pygame.init()
 pygame.mixer.init()
 pygame.font.init()
@@ -13,6 +16,7 @@ screen = pygame.display.set_mode(size)
 title = pygame.image.load("title page.png")
 room = pygame.image.load("Room1/Room1.bmp")
 startButton = pygame.image.load("Buttons/Start.png")
+PORTAL_SWAG = ((35, 30), (width - 35, 30), (35, height - 30), (width - 35, height - 30))
 STORY_SWAG = (
 """
 Escobro: Welcome to Freshman Year! Come find me in the Guidance Office.
@@ -133,8 +137,7 @@ for b in range(3):
     but = Button(buttonImageChoose(b), ((b + 1) * width / 4), height / 3, 169, 46, b + 1)
     buttons.append(but)
 
-SCREEN_WIDTH = 640
-SCREEN_HEIGHT = 480
+
 
 player_img = pygame.image.load("Sprites/Nerd.png")
 background = pygame.image.load("Room1/Room1.bmp").convert()
@@ -206,6 +209,8 @@ while True:
                 if event.type == QUIT:
                     sys.exit()
             screen.blit(background, (0, 0))
+            if i < 4:	
+        		screen.blit(pygame.image.load("portal.png"), PORTAL_SWAG[i])
             cooldown = swagfont.render(p.text, 1, (242, 100, 68))
             screen.blit(cooldown, (30, SCREEN_HEIGHT - 25))
             p.update(screen)
@@ -213,9 +218,12 @@ while True:
             if e_contact:
                 lost = True
                 break
+            if p.isAtPortal():
+            	break
             pygame.display.update()
         if lost:
             break
+        
     if lost:
         background = pygame.image.load("end notice.jpg").convert()
     
