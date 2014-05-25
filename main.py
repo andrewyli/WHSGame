@@ -252,7 +252,7 @@ while True:
                 break
             pygame.display.flip()
             pygame.event.pump()
-
+        
     if characterSelected == "Nerd":
         winImage = pygame.image.load("nerd win.jpg")
     elif characterSelected == "Jock":
@@ -263,5 +263,6 @@ while True:
         background = winImage
         screen.blit(background, (0, 0))
         pygame.display.flip()
-    time.sleep(10)
+        time.sleep(10)
+    
     pygame.mixer.music.fadeout(200)
