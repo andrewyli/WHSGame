@@ -37,8 +37,10 @@ class Button:
         elif self.num == 3:
             return "Prep"
 
+quitButton = pygame.image.load("Buttons/QuitButton.png")
 
-start = Button(startButton, width / 2, 6 * height / 7, 169, 46, 0)
+start = Button(startButton, width / 2, (6 * height / 7) - 46, 169, 46, 0)
+quitGame = Button(quitButton, width / 2, 6 * height / 7, 169, 46, 0)
 
 chars = []
 buttons = []
@@ -110,8 +112,11 @@ while True:
     while not begin:
         screen.blit(title, (0, 0))
         screen.blit(start.image, start.rect)
+        screen.blit(quitGame.image, quitGame.rect)
         if start.checkClick():
             begin = True
+        if quitGame.checkClick():
+            sys.exit()
         pygame.display.update()
         pygame.event.pump()
 
