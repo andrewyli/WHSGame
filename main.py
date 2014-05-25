@@ -166,7 +166,7 @@ while True:
                 sys.exit()
         screen.blit(background, (0, 0))
         cooldown = swagfont.render(p.text, 1, (242, 100, 68))
-        screen.blit(cooldown, (SCREEN_HEIGHT - 25, 30))
+        screen.blit(cooldown, (30, SCREEN_HEIGHT - 25))
         p.update(screen)
         e_contact = escobro.update(screen)
         if e_contact:
