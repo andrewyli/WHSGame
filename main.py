@@ -112,6 +112,7 @@ SCREEN_HEIGHT = 480
 
 if characterSelected == "Nerd":
     player_img = pygame.image.load("Sprites/Nerd.png")
+
 if characterSelected == "Jock":
     player_img = pygame.image.load("Sprites/Jock.png")
 if characterSelected == "Prep":
@@ -119,7 +120,7 @@ if characterSelected == "Prep":
 
 background = pygame.image.load("Room1/Room1.bmp").convert()
 
-p = Player(player_img, [0, 0], 0, 2, True)
+# p = Player(player_img, [0, 0], 0, 2, True)
 
 while True:
     for event in pygame.event.get():

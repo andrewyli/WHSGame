@@ -18,7 +18,7 @@ class Nerd(Player):
             self.cooldown = 5000 - pygame.time.get_ticks() + self.startCooldown
         if self.cooldown <= 0:
             self.visible = True
-            print "drained"
+            self.image = pygame.image.load("Sprites/Nerd.png").convert_alpha()
 
     def changeSpeed(self, events):
         for event in events:
@@ -49,8 +49,6 @@ class Nerd(Player):
                 if event.key == pygame.K_SPACE:
                     if self.cooldown == 5000:
                         self.visible = False
+                        self.image = pygame.image.load("Sprites/NerdCloak.png").convert_alpha()
                         self.startCooldown = pygame.time.get_ticks()
-                    
         pygame.event.clear()
-
-
