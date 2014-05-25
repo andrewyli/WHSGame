@@ -9,12 +9,10 @@ SCREEN_HEIGHT = 480
 
 class Player(pygame.sprite.Sprite):
 
-    def __init__(self, image, x, y, speed, direction, movespeed):
+    def __init__(self, image, speed, direction, movespeed):
         pygame.sprite.Sprite.__init__(self)
         self.image = image.convert_alpha()
-        self.rect = self.image.get_rect()
-        self.xPos = x
-        self.yPos = y
+        self.rect = self.image.get_rect().move(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
         self.direction = direction
         self.speed = speed
         self.movespeed = movespeed
@@ -66,5 +64,24 @@ class Player(pygame.sprite.Sprite):
         pygame.event.clear()
 
     def move(self):
-        self.rect = self.rect.move(self.speed)
-        
+        if (self.canMove()):
+            self.rect = self.rect.move(self.speed)
+        pygame.time.delay(1)
+
+    def canMove(self):
+        if (self.direction == 0):
+            if self.rect.top > 30 and self.rect.bottom < 450:
+                return True
+            return False
+        if (self.direction == 90):
+            if self.rect.left > 35 and self.rect.right < 610:
+                return True
+            return False
+        if (self.direction == 180):
+            if self.rect.top > 30 and self.rect.bottom < 450:
+                return True
+            return False
+        if (self.direction == 270):
+            if self.rect.left > 35 and self.rect.right < 610:
+                return True
+            return False
