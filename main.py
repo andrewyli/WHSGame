@@ -19,30 +19,51 @@ startButton = pygame.image.load("Buttons/Start.png")
 PORTAL_SWAG = ((35, 30), (width - 55, 30), (35, height - 55), (width - 55, height - 55))
 STORY_SWAG = (
 """
-Escobro: Welcome to Freshman Year! Come find me in the Guidance Office.
-We need to discuss your classes! 
-Goal: get to the Physics classroom before Escobro finds you"
+Escobro: Welcome to Freshman Year!\n
+Come find me in the Guidance Office.\n
+We need to discuss your classes! \n
+Goal: get to the Physics classroom\n
+before Escobro finds you"
 """,
 """
-Escobro: You can't escape me! Mr. Davidson told me that Dr. Korsunsky said that you
-are a bad kid. Hah! We need to talk about your classes!
-Goal: run up to the Library and seek the shelter of the great Ms. Hanson at Res-Tech
+Escobro: You can't escape me!\n 
+Mr. Davidson told me that \n
+Dr. Korsunsky said that you\n
+are a bad kid. Hah! We need\n
+to talk about your classes!\n
+Goal: run up to the Library \n
+and seek the shelter of the \n
+great Ms. Hanson at Res-Tech\n
 """,
 """
-Escobro: Fine. I admit, you avoided me thus far. BUT NOT FOR LONG! You didnt get 
-recommended for Honors English from Ms. Chaimanis. So you have to meet me in the
-guidance office to get your form signed.
-Goal: You have to go to the Guidance Office to get signature, but run immediately to
-English/History office to get Ms. Lemons' signature.
+Escobro: Fine. I admit, you\n
+avoided me thus far. BUT NOT\n
+FOR LONG! You didnt get \n
+recommended for Honors English\n
+from Ms. Chaimanis. So you have\n
+to meet me in the guidance office\n
+to get your form signed.\n
+Goal: You have to go to the\n
+Guidance Office to get signature,\n
+but run immediately to\n
+English/History office to get\n
+Ms. Lemons' signature.\n
 """,
 """
-Escobro: How stupid can you be? After you glued a mouse to the ceiling of the Library,
-Ms. Hanson hates you. Now, I will have to find you and talk about what and why you did.
-WHY?!?!?!?!
-Goal: Escape Mr. Escobar, Ms. Hanson, Mr. Parker. . .
+Escobro: How stupid can you\n
+be? After you glued a mouse to\n
+the ceiling of the Library,\n
+Ms. Hanson hates you. Now, I\n
+will have to find you and talk\n
+about what and why you did.\n
+WHY?!?!?!?!\n
+Goal: Escape Mr. Escobar, \n
+Ms. Hanson, Mr. Parker. . .\n
 """,
 """
-Escobro: Congratulations on completing Freshman Year! Dont worry - Ill see you next year.
+Escobro: Congratulations on\n 
+completing Freshman Year! Dont\n
+worry - Ill see you next year.\n
 
 """)
 
