@@ -19,25 +19,25 @@ We need to discuss your classes!
 Goal: get to the Physics classroom before Escobro finds you"
 """,
 """
-Escobro: You can’t escape me! Mr. Davidson told me that Dr. Korsunsky said that you
+Escobro: You can't escape me! Mr. Davidson told me that Dr. Korsunsky said that you
 are a bad kid. Hah! We need to talk about your classes!
 Goal: run up to the Library and seek the shelter of the great Ms. Hanson at Res-Tech
 """,
 """
-Escobro: Fine. I admit, you avoided me thus far. BUT NOT FOR LONG! You didn’t get 
-recommended for Honors English from Ms. Chaimanis. So, you have to meet me in the
+Escobro: Fine. I admit, you avoided me thus far. BUT NOT FOR LONG! You didnt get 
+recommended for Honors English from Ms. Chaimanis. So you have to meet me in the
 guidance office to get your form signed.
 Goal: You have to go to the Guidance Office to get signature, but run immediately to
-English/History office to get Ms. Lemons’ signature.
+English/History office to get Ms. Lemons' signature.
 """,
 """
 Escobro: How stupid can you be? After you glued a mouse to the ceiling of the Library,
 Ms. Hanson hates you. Now, I will have to find you and talk about what and why you did.
 WHY?!?!?!?!
-Goal: Escape Mr. Escobar, Ms. Hanson, Mr. Parker….
+Goal: Escape Mr. Escobar, Ms. Hanson, Mr. Parker. . .
 """,
 """
-Escobro: Congratulations on completing Freshman Year! Don’t worry - I’ll see you next year.
+Escobro: Congratulations on completing Freshman Year! Dont worry - Ill see you next year.
 
 """)
 
@@ -193,16 +193,15 @@ while True:
     if characterSelected == "Prep":
         player_img = pygame.image.load("Sprites/Preppy.png")
     	p = Prep(player_img, [0, 0], 0, 2, True, False)
-    escobro = Escobro(40, 40, p, escobroSprite)
-    
-    pygame.mixer.music.fadeout(2000)
-    pygame.mixer.music.load("1st sem.ogg")
-    pygame.mixer.music.play(-1)
+	escobro = Escobro(40, 40, p, escobroSprite)
+	pygame.mixer.music.fadeout(2000)
+	pygame.mixer.music.load("1st sem.ogg")
+	pygame.mixer.music.play(-1)
 	lost = False
 	for i in range(5):
 		displayStory(STORY_SWAG[i])
     	while True:
-        	for event in pygame.event.get():
+			for event in pygame.event.get():
             	if event.type == QUIT:
                 	sys.exit()
         	screen.blit(background, (0, 0))
