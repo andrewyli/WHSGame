@@ -1,13 +1,20 @@
 import pygame
 from Player import Player
 from pygame.locals import *
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
 
 
 class Jock(Player):
-    def __init__(self, image, speed, direction, movespeed, sprint):
-        Player.__init__(self, image, speed, direction, movespeed, sprint)
-        
+    def __init__(self, image, speed, direction, movespeed, visible, sprint):
+        Player.__init__(self, image, speed, direction, movespeed, visible, sprint)
+        self.text = ""
+
     def update(self, surface):
+        if self.cooldown > 5000:
+            self.cooldown = 5000
+        elif self.cooldown < 0:
+            self.cooldown = 0
         event = pygame.event.get()
         self.changeSpeed(event)
         surface.blit(self.image, self.rect)
@@ -18,11 +25,12 @@ class Jock(Player):
             self.cooldown = 5000 - pygame.time.get_ticks() + self.startCooldown
         if self.cooldown <= 0:
             self.sprint = False
-            self.image = pygame.image.load("Sprites/JockSprint.png").convert_alpha()
+            self.image = pygame.image.load("Sprites/Jock.png").convert_alpha()
+            for i in range(self.direction / 90):
+                self.image = pygame.transform.rotate(self.image, -90)
             self.movespeed = self.movespeed / 2
-            for i in range(self.direction /90):
-                self.image = pygame.transform.rotate(self.image, 90)
-            
+        self.text = "Cooldown: " + str(self.cooldown)
+
     def changeSpeed(self, events):
         for event in events:
             if event.type == QUIT:
@@ -51,10 +59,10 @@ class Jock(Player):
                     self.move()
                 if event.key == pygame.K_SPACE:
                     if self.cooldown == 5000:
-                        self.Sprint = True
+                        self.sprint = True
                         self.image = pygame.image.load("Sprites/JockSprint.png").convert_alpha()
-                        self.movespeed = self.movespeed * 2
                         for i in range(self.direction / 90):
                             self.image = pygame.transform.rotate(self.image, -90)
+                        self.movespeed = self.movespeed * 2
                         self.startCooldown = pygame.time.get_ticks()
         pygame.event.clear()

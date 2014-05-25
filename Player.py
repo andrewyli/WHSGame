@@ -8,7 +8,7 @@ SCREEN_HEIGHT = 480
 
 class Player(pygame.sprite.Sprite):  # takes stuff from Sprite
 
-    def __init__(self, image, speed, direction, movespeed, visible):
+    def __init__(self, image, speed, direction, movespeed, visible, sprint):
         pygame.sprite.Sprite.__init__(self)
         self.image = image.convert_alpha()  # transparent image
         self.rect = self.image.get_rect().move(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)  # rect is for blitting
@@ -18,6 +18,7 @@ class Player(pygame.sprite.Sprite):  # takes stuff from Sprite
         self.visible = visible  # for stealth mode
         self.startCooldown = None  # for timing
         self.cooldown = 5000
+        self.sprint = sprint
 
     def update(self, surface):  # main function called in loop of main
         event = pygame.event.get()  # get an event
