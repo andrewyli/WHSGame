@@ -70,18 +70,18 @@ class Player(pygame.sprite.Sprite):
 
     def canMove(self):
         if (self.direction == 0):
-            if self.rect.top > 30 and self.rect.bottom < 450:
+            if self.rect.top > 30 and self.rect.bottom < SCREEN_HEIGHT - 30:
                 return True
             return False
         if (self.direction == 90):
-            if self.rect.left > 35 and self.rect.right < 610:
+            if self.rect.left > 35 and self.rect.right < SCREEN_WIDTH - 35:
                 return True
             return False
         if (self.direction == 180):
-            if self.rect.top > 30 and self.rect.bottom < 450:
+            if self.rect.top > 30 and self.rect.bottom < SCREEN_HEIGHT - 30:
                 return True
             return False
         if (self.direction == 270):
-            if self.rect.left > 35 and self.rect.right < 610:
+            if self.rect.left > 35 and self.rect.right < SCREEN_WIDTH - 35:
                 return True
             return False
