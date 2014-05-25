@@ -82,24 +82,24 @@ jockButton = pygame.image.load("Buttons/JockButton.png")
 prepButton = pygame.image.load("Buttons/PrepButton.png")
 
 
-
-
 def displayStory(text, screen):
-	swagfont = SysFont("trojan", 50)
-	screen.fill((0, 0, 0))
-	for i in range(256):
-		swag = swagfont.render(text, 1, (255, 255, 255))
-		swag.set_alphas(i)
-		screen.blit(swag)
-		pygame.display.flip()
-		time.delay(5)
-	time.delay(20000)
-	for i in range(256):
-		swag = swagfont.render(text, 1, (255, 255, 255))
-		swag.set_alphas(255 - i)
-		screen.blit(swag)
-		pygame.display.flip()
-		time.delay(55)
+    swagfont = pygame.font.SysFont("trojan", 50)
+    screen.fill((0, 0, 0))
+    for i in range(256):
+        swag = swagfont.render(text, 1, (255, 255, 255))
+        swag.set_alpha(i)
+        screen.blit(swag, (0, 0))
+        pygame.display.flip()
+        pygame.time.delay(5)
+    pygame.time.delay(50)
+    for i in range(256):
+        swag = swagfont.render(text, 1, (255, 255, 255))
+        swag.set_alpha(255 - i)
+        screen.blit(swag, (0, 0))
+        pygame.display.flip()
+        pygame.time.delay(5)
+
+
 def classImageChoose(num):
     if num == 0:
         return previewNerd
@@ -200,7 +200,7 @@ while True:
     pygame.mixer.music.play(-1)
     lost = False
     for i in range(5):
-        displayStory(STORY_SWAG[i])
+        displayStory(STORY_SWAG[i], screen)
         while True:
             for event in pygame.event.get():
                 if event.type == QUIT:
@@ -212,20 +212,22 @@ while True:
             e_contact = escobro.update(screen)
             if e_contact:
                 lost = True
-            pygame.display.update()
-            if lost:
                 break
-    background = pygame.image.load("end notice.jpg").convert()
-    
-    pygame.mixer.music.fadeout(2000)
-    pygame.mixer.music.load("game over.ogg")
-    pygame.mixer.music.play(-1)
-
-    while True:
-        screen.blit(background, (0, 0))
-        screen.blit(toMenu.image, toMenu.rect)
-        if toMenu.checkClick():
+            pygame.display.update()
+        if lost:
             break
-        pygame.display.flip()
-        pygame.event.pump()
-    pygame.time.delay(500)
+    if lost:
+        background = pygame.image.load("end notice.jpg").convert()
+    
+        pygame.mixer.music.fadeout(2000)
+        pygame.mixer.music.load("game over.ogg")
+        pygame.mixer.music.play(-1)
+
+        while True:
+            screen.blit(background, (0, 0))
+            screen.blit(toMenu.image, toMenu.rect)
+            if toMenu.checkClick():
+                break
+            pygame.display.flip()
+            pygame.event.pump()
+        pygame.time.delay(500)
