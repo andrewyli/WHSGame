@@ -1,19 +1,30 @@
 import pygame
+import os
 import sys
 import time
 from pygame.locals import *
 from Player import Player
-from Title import Title
+import Title
 
 pygame.init()
 
-Title.run()
+os.system("python Title.py")
+
+f = open("output.txt", "r")
+character_type = f.read()
 
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-player_img = pygame.image.load("Art/Sprites/Nerd.png")
-background = pygame.image.load("Art/Room1/Room1.bmp").convert()
+
+if character_type == "Nerd":
+    player_img = pygame.image.load("Sprites/Nerd.png")
+if character_type == "Jock":
+    player_img = pygame.image.load("Sprites/Jock.png")
+if character_type == "Prep":
+    player_img = pygame.image.load("Sprites/Prep.png")
+
+background = pygame.image.load("Room1/Room1.bmp").convert()
 
 p = Player(player_img, [0, 0], 0, 2, True)
 
