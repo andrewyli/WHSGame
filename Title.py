@@ -8,8 +8,8 @@ pygame.init()
 size = width, height = 640, 480
 
 screen = pygame.display.set_mode(size)
-title = pygame.image.load("title page.png")
-startButton = pygame.image.load("Buttons/Start.png")
+title = pygame.image.load("Art/title page.png")
+startButton = pygame.image.load("Art/startbutton.png")
 begin = False
 
 
@@ -28,9 +28,11 @@ class Button:
         m1, m2, m3 = pygame.mouse.get_pressed()
         if m1 and mousex - self.rect.left <= self.width and mousex - self.rect.left >= 0 and mousey - self.rect.top <= self.height and mousey - self.rect.top >= 0:
             return True
-def run:
-    start = Button(startButton, width / 2, 6 * height / 7, 169, 46)
 
+
+def run():
+    start = Button(startButton, width / 2, 6 * height / 7, 169, 46)
+    global begin
     while not begin:
         screen.blit(title, (0, 0))
         screen.blit(start.image, start.rect)
@@ -39,3 +41,5 @@ def run:
             begin = True
         pygame.display.update()
         pygame.event.pump()
+
+run()
