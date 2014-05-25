@@ -7,7 +7,8 @@ class Nerd(Player):
     def __init__(self, image, speed, direction, movespeed, visible):
         Player.__init__(self, image, speed, direction, movespeed, visible)
         self.movespeed = 2 * movespeed / 3
-
+        self.text = ""
+		
     def update(self, surface):
         event = pygame.event.get()
         self.changeSpeed(event)
@@ -22,7 +23,7 @@ class Nerd(Player):
             self.image = pygame.image.load("Sprites/Nerd.png").convert_alpha()
             for i in range(self.direction / 90):
                 self.image = pygame.transform.rotate(self.image, 90)
-
+		self.text = "Cooldown: " + str(self.cooldown)
     def changeSpeed(self, events):
         for event in events:
             if event.type == QUIT:

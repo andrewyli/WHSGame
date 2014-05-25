@@ -1,10 +1,10 @@
-import pygame, sys, random, time, pygame.mixer
+import pygame, sys, random, time, pygame.mixer, pygame.font
 from Player import Player
 from Escobro import Escobro
+from nerd import Nerd
 from pygame.locals import *
 pygame.init()
 pygame.mixer.init()
-
 size = width, height = 640, 480
 
 screen = pygame.display.set_mode(size)
@@ -104,6 +104,8 @@ toMenu = Button(menuButton, width / 2, 3 * height / 5, 169, 46, 4)
 """
 Beginning of the main loop of the game.
 """
+pygame.font.init()
+swagfont = pygame.font.SysFont("trojan", 20) 
 while True:
 
     begin = False
@@ -139,16 +141,19 @@ while True:
         pygame.display.flip()
         pygame.event.pump()
 
-    """
+	p = Nerd(player_img, [0, 0], 0, 2, True)
     if characterSelected == "Nerd":
         player_img = pygame.image.load("Sprites/Nerd.png")
+        p = Nerd(player_img, [0, 0], 0, 2, True)
     if characterSelected == "Jock":
         player_img = pygame.image.load("Sprites/Jock.png")
+       # p = Jock(player_img, [0, 0], 0, 2, True)
     if characterSelected == "Prep":
         player_img = pygame.image.load("Sprites/Preppy.png")
-    """
+    	#p = Prep(player_img, [0, 0], 0, 2, True)
 
-    p = Player(player_img, [0, 0], 0, 2, True)
+
+
     escobro = Escobro(40, 40, p, escobroSprite)
     
     pygame.mixer.music.fadeout(2000)
@@ -160,6 +165,8 @@ while True:
             if event.type == QUIT:
                 sys.exit()
         screen.blit(background, (0, 0))
+        cooldown = swagfont.render(p.text, 1, (242, 100, 68))
+        screen.blit(cooldown, (SCREEN_HEIGHT - 25, 30))
         p.update(screen)
         e_contact = escobro.update(screen)
         if e_contact:
