@@ -23,7 +23,7 @@ Escobro: Welcome to Freshman Year!\n
 Come find me in the Guidance Office.\n
 We need to discuss your classes! \n
 Goal: get to the Physics classroom\n
-before Escobro finds you"
+before Escobro finds you
 """,
 """
 Escobro: You can't escape me!\n 
@@ -109,16 +109,15 @@ prepButton = pygame.image.load("Buttons/PrepButton.png")
 
 
 def displayStory(text, screen):
-    swagfont = pygame.font.SysFont("trajan", 40)
+    swagfont = pygame.font.SysFont("trajan", 50)
     screen.fill((0, 0, 0))
     lines = text.splitlines()
-	for i in range(len(lines)):
-		line = lines[i]
-		swag = swagfont.render(line, 1, (255, 255, 255))
-		screen.blit(swag, (0, 40*i))
+    for i in range(len(lines)):
+        line = lines[i]
+        swag = swagfont.render(line, 1, (255, 255, 255))
+        screen.blit(swag, (0, 20 * i))
     pygame.display.flip()
-    pygame.time.delay(50)
-
+    pygame.time.delay(5000)
 
 
 def classImageChoose(num):
@@ -153,7 +152,6 @@ for c in range(3):
 for b in range(3):
     but = Button(buttonImageChoose(b), ((b + 1) * width / 4), height / 3, 169, 46, b + 1)
     buttons.append(but)
-
 
 
 player_img = pygame.image.load("Sprites/Nerd.png")
@@ -254,7 +252,6 @@ while True:
                 break
             pygame.display.flip()
             pygame.event.pump()
-        pygame.time.delay(500)
 
     if characterSelected == "Nerd":
         winImage = pygame.image.load("nerd win.jpg")
