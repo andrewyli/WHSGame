@@ -1,4 +1,5 @@
 import pygame
+from Player import Player
 from pygame.locals import *
 
 
@@ -19,6 +20,8 @@ class Nerd(Player):
         if self.cooldown <= 0:
             self.visible = True
             self.image = pygame.image.load("Sprites/Nerd.png").convert_alpha()
+            for i in range(self.direction / 90):
+                self.image = pygame.transform.rotate(self.image, 90)
 
     def changeSpeed(self, events):
         for event in events:
@@ -50,5 +53,7 @@ class Nerd(Player):
                     if self.cooldown == 5000:
                         self.visible = False
                         self.image = pygame.image.load("Sprites/NerdCloak.png").convert_alpha()
+                        for i in range(self.direction / 90):
+                            self.image = pygame.transform.rotate(self.image, -90)
                         self.startCooldown = pygame.time.get_ticks()
         pygame.event.clear()

@@ -1,6 +1,7 @@
 import pygame, sys, random, time
 from Player import Player
 from Escobro import Escobro
+from nerd import Nerd
 from pygame.locals import *
 pygame.init()
 
@@ -144,7 +145,7 @@ while True:
         player_img = pygame.image.load("Sprites/Preppy.png")
     """
 
-    p = Player(player_img, [0, 0], 0, 2, True)
+    p = Nerd(player_img, [0, 0], 0, 2, True)
     escobro = Escobro(40, 40, p, escobroSprite)
 
     while True:
