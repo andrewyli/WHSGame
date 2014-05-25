@@ -18,13 +18,12 @@ class Player(pygame.sprite.Sprite):
         self.movespeed = movespeed
 
     def update(self, surface):
-        self.changeSpeed()
-        self.move()
+        event = pygame.event.get()
+        self.changeSpeed(event)
         surface.blit(self.image, self.rect)
 
-    def changeSpeed(self):
-        event = pygame.event.wait()
-        if 1 == 1:
+    def changeSpeed(self, events):
+        for event in events:
             if event.type == QUIT:
                 sys.exit()
             # elif event.type == pygame.KEYDOWN:
@@ -48,26 +47,29 @@ class Player(pygame.sprite.Sprite):
                     if self.direction == 270:
                         self.speed[0] = -self.movespeed
                         self.speed[1] = 0
+                    self.move()
+        pygame.event.clear()
 
     def move(self):
-        if (self.canMove()):
-            self.rect = self.rect.move(self.speed)
-        pygame.time.delay(1)
+        for i in range(10):
+            if (self.canMove()):
+                self.rect = self.rect.move(self.speed)
+                pygame.time.delay(5)
 
     def canMove(self):
         if (self.direction == 0):
-            if self.rect.top > 30 and self.rect.bottom < SCREEN_HEIGHT - 30:
+            if self.rect.top > 30:
                 return True
             return False
         if (self.direction == 90):
-            if self.rect.left > 35 and self.rect.right < SCREEN_WIDTH - 35:
+            if self.rect.right < SCREEN_WIDTH - 30:
                 return True
             return False
         if (self.direction == 180):
-            if self.rect.top > 30 and self.rect.bottom < SCREEN_HEIGHT - 30:
+            if self.rect.bottom < SCREEN_HEIGHT - 30:
                 return True
             return False
         if (self.direction == 270):
-            if self.rect.left > 35 and self.rect.right < SCREEN_WIDTH - 35:
+            if self.rect.left > 35:
                 return True
             return False
