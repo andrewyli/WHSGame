@@ -6,13 +6,40 @@ from Jock import Jock
 from pygame.locals import *
 pygame.init()
 pygame.mixer.init()
+pygame.font.init()
 size = width, height = 640, 480
 
 screen = pygame.display.set_mode(size)
 title = pygame.image.load("title page.png")
 room = pygame.image.load("Room1/Room1.bmp")
 startButton = pygame.image.load("Buttons/Start.png")
+STORY_SWAG = (
+"""Escobro: Welcome to Freshman Year! Come find me in the Guidance Office.
+We need to discuss your classes! 
+Goal: get to the Physics classroom before Escobro finds you"
+""",
+"""
+Escobro: You can’t escape me! Mr. Davidson told me that Dr. Korsunsky said that you
+are a bad kid. Hah! We need to talk about your classes!
+Goal: run up to the Library and seek the shelter of the great Ms. Hanson at Res-Tech
+""",
+"""
+Escobro: Fine. I admit, you avoided me thus far. BUT NOT FOR LONG! You didn’t get 
+recommended for Honors English from Ms. Chaimanis. So, you have to meet me in the
+guidance office to get your form signed.
+Goal: You have to go to the Guidance Office to get signature, but run immediately to
+English/History office to get Ms. Lemons’ signature.
+""",
+"""
+Escobro: How stupid can you be? After you glued a mouse to the ceiling of the Library,
+Ms. Hanson hates you. Now, I will have to find you and talk about what and why you did.
+WHY?!?!?!?!
+Goal: Escape Mr. Escobar, Ms. Hanson, Mr. Parker….
+""",
+"""
+Escobro: Congratulations on completing Freshman Year! Don’t worry - I’ll see you next year.
 
+""")
 
 class Button:
     def __init__(self, image, x, y, width, height, num):
@@ -56,8 +83,22 @@ prepButton = pygame.image.load("Buttons/PrepButton.png")
 
 
 
-
-
+def displayStory(text, screen):
+	swagfont = SysFont("trojan", 50)
+	screen.fill((0, 0, 0))
+	for i in range(256):
+		swag = swagfont.render(text, 1, (255, 255, 255))
+		swag.set_alphas(i)
+		screen.blit(swag)
+		pygame.display.flip()
+		time.delay(5)
+	time.delay(20000)
+	for i in range(256):
+		swag = swagfont.render(text, 1, (255, 255, 255))
+		swag.set_alphas(255 - i)
+		screen.blit(swag)
+		pygame.display.flip()
+		time.delay(55)
 def classImageChoose(num):
     if num == 0:
         return previewNerd
@@ -105,7 +146,7 @@ toMenu = Button(menuButton, width / 2, 3 * height / 5, 169, 46, 4)
 """
 Beginning of the main loop of the game.
 """
-pygame.font.init()
+
 swagfont = pygame.font.SysFont("trojan", 20)
 while True:
 
@@ -151,26 +192,29 @@ while True:
         p = Jock(player_img, [0, 0], 0, 2, True, False)
     if characterSelected == "Prep":
         player_img = pygame.image.load("Sprites/Preppy.png")
-    # p = Prep(player_img, [0, 0], 0, 2, True, False)
+    	p = Prep(player_img, [0, 0], 0, 2, True, False)
     escobro = Escobro(40, 40, p, escobroSprite)
     
     pygame.mixer.music.fadeout(2000)
     pygame.mixer.music.load("1st sem.ogg")
     pygame.mixer.music.play(-1)
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                sys.exit()
-        screen.blit(background, (0, 0))
-        cooldown = swagfont.render(p.text, 1, (242, 100, 68))
-        screen.blit(cooldown, (30, SCREEN_HEIGHT - 25))
-        p.update(screen)
-        e_contact = escobro.update(screen)
-        if e_contact:
-            break
-        pygame.display.update()
-
+	lost = False
+	for i in range(5):
+		displayStory(STORY_SWAG[i])
+    	while True:
+        	for event in pygame.event.get():
+            	if event.type == QUIT:
+                	sys.exit()
+        	screen.blit(background, (0, 0))
+        	cooldown = swagfont.render(p.text, 1, (242, 100, 68))
+        	screen.blit(cooldown, (30, SCREEN_HEIGHT - 25))
+        	p.update(screen)
+        	e_contact = escobro.update(screen)
+        	if e_contact:
+            	lost = True
+        	pygame.display.update()
+		if lost:
+			break
     background = pygame.image.load("end notice.jpg").convert()
     
     pygame.mixer.music.fadeout(2000)
