@@ -10,6 +10,7 @@ class Nerd(Player):
         event = pygame.event.get()
         if event.type = KEYDOWN:
             if event.key == pygame.K_SPACE:
-                self.visible = False
-        
+                if self.visible:
+                    self.visible = False
+
 

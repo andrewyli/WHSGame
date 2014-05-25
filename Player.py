@@ -17,7 +17,8 @@ class Player(pygame.sprite.Sprite):
         self.speed = speed
         self.movespeed = movespeed
         self.visible = visible
-
+        self.startCooldown = None
+        self.cooldown = 5000
     def update(self, surface):
         event = pygame.event.get()
         self.changeSpeed(event)
