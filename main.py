@@ -209,8 +209,8 @@ while True:
                 if event.type == QUIT:
                     sys.exit()
             screen.blit(background, (0, 0))
-            if i < 4:	
-        		screen.blit(pygame.image.load("portal.png"), PORTAL_SWAG[i])
+            if i < 4:
+                screen.blit(pygame.image.load("portal.png"), PORTAL_SWAG[i])
             cooldown = swagfont.render(p.text, 1, (242, 100, 68))
             screen.blit(cooldown, (30, SCREEN_HEIGHT - 25))
             p.update(screen)
@@ -219,14 +219,12 @@ while True:
                 lost = True
                 break
             if p.isAtPortal():
-            	break
+                break
             pygame.display.update()
         if lost:
             break
-        
     if lost:
         background = pygame.image.load("end notice.jpg").convert()
-    
         pygame.mixer.music.fadeout(2000)
         pygame.mixer.music.load("game over.ogg")
         pygame.mixer.music.play(-1)
