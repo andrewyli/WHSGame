@@ -1,9 +1,9 @@
-import pygame, sys, random, time
+import pygame, sys, random, time, pygame.mixer
 from Player import Player
 from Escobro import Escobro
-from nerd import Nerd
 from pygame.locals import *
 pygame.init()
+pygame.mixer.init()
 
 size = width, height = 640, 480
 
@@ -110,6 +110,9 @@ while True:
 
     background = pygame.image.load("Room1/Room1.bmp").convert()
 
+    pygame.mixer.music.load("title screen.ogg")
+    pygame.mixer.music.play(-1)
+
     while not begin:
         screen.blit(title, (0, 0))
         screen.blit(start.image, start.rect)
@@ -145,8 +148,12 @@ while True:
         player_img = pygame.image.load("Sprites/Preppy.png")
     """
 
-    p = Nerd(player_img, [0, 0], 0, 2, True)
+    p = Player(player_img, [0, 0], 0, 2, True)
     escobro = Escobro(40, 40, p, escobroSprite)
+    
+    pygame.mixer.music.fadeout(2000)
+    pygame.mixer.music.load("1st sem.ogg")
+    pygame.mixer.music.play(-1)
 
     while True:
         for event in pygame.event.get():
@@ -160,6 +167,10 @@ while True:
         pygame.display.update()
 
     background = pygame.image.load("end notice.jpg").convert()
+    
+    pygame.mixer.music.fadeout(2000)
+    pygame.mixer.music.load("game over.ogg")
+    pygame.mixer.music.play(-1)
 
     while True:
         screen.blit(background, (0, 0))
