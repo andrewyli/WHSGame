@@ -1,5 +1,6 @@
 import pygame, sys, random, time
 from Player import Player
+from Escobro import Escobro
 from pygame.locals import *
 pygame.init()
 
@@ -119,13 +120,16 @@ if characterSelected == "Prep":
 
 player_img = pygame.image.load("Sprites/Nerd.png")
 background = pygame.image.load("Room1/Room1.bmp").convert()
+escobroSprite = pygame.image.load("Sprites/Escobro Placeholder.png")
 
 p = Player(player_img, [0, 0], 0, 2, True)
+escobro = Escobro(40, 40, p, escobroSprite)
 
 while True:
     for event in pygame.event.get():
         if event.type == QUIT:
             sys.exit()
     screen.blit(background, (0, 0))
+    screen.blit(escobro.image, escobro.rect)
     p.update(screen)
     pygame.display.update()
