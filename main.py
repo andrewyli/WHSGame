@@ -2,6 +2,7 @@ import pygame, sys, random, time, pygame.mixer, pygame.font
 from Player import Player
 from Escobro import Escobro
 from nerd import Nerd
+from Jock import Jock
 from pygame.locals import *
 pygame.init()
 pygame.mixer.init()
@@ -95,7 +96,7 @@ SCREEN_HEIGHT = 480
 
 player_img = pygame.image.load("Sprites/Nerd.png")
 background = pygame.image.load("Room1/Room1.bmp").convert()
-escobroSprite = pygame.image.load("Sprites/Escobro Placeholder.png")
+escobroSprite = pygame.image.load("Sprites/Escobro.png")
 
 menuButton = pygame.image.load("Buttons/MenuButton.png")
 toMenu = Button(menuButton, width / 2, 3 * height / 5, 169, 46, 4)
@@ -105,7 +106,7 @@ toMenu = Button(menuButton, width / 2, 3 * height / 5, 169, 46, 4)
 Beginning of the main loop of the game.
 """
 pygame.font.init()
-swagfont = pygame.font.SysFont("trojan", 20) 
+swagfont = pygame.font.SysFont("trojan", 20)
 while True:
 
     begin = False
@@ -141,19 +142,16 @@ while True:
         pygame.display.flip()
         pygame.event.pump()
 
-	p = Nerd(player_img, [0, 0], 0, 2, True)
+    p = Nerd(player_img, [0, 0], 0, 2, True, False)
     if characterSelected == "Nerd":
         player_img = pygame.image.load("Sprites/Nerd.png")
-        p = Nerd(player_img, [0, 0], 0, 2, True)
+        p = Nerd(player_img, [0, 0], 0, 2, True, False)
     if characterSelected == "Jock":
         player_img = pygame.image.load("Sprites/Jock.png")
-       # p = Jock(player_img, [0, 0], 0, 2, True)
+        p = Jock(player_img, [0, 0], 0, 2, True, False)
     if characterSelected == "Prep":
         player_img = pygame.image.load("Sprites/Preppy.png")
-    	#p = Prep(player_img, [0, 0], 0, 2, True)
-
-
-
+    # p = Prep(player_img, [0, 0], 0, 2, True, False)
     escobro = Escobro(40, 40, p, escobroSprite)
     
     pygame.mixer.music.fadeout(2000)
