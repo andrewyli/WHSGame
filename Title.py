@@ -14,7 +14,7 @@ begin = False
 
 
 class Button:
-    def __init__(self, image, x, y, width, height): 
+    def __init__(self, image, x, y, width, height):
         # x and y are center of button. width and height are width and height of button icon
         self.image = image
         self.x = x
@@ -41,5 +41,3 @@ def run():
             begin = True
         pygame.display.update()
         pygame.event.pump()
-
-run()
