@@ -16,7 +16,7 @@ screen = pygame.display.set_mode(size)
 title = pygame.image.load("title page.png")
 room = pygame.image.load("Room1/Room1.bmp")
 startButton = pygame.image.load("Buttons/Start.png")
-PORTAL_SWAG = ((35, 30), (width - 35, 30), (35, height - 30), (width - 35, height - 30))
+PORTAL_SWAG = ((35, 30), (width - 55, 30), (35, height - 55), (width - 55, height - 55))
 STORY_SWAG = (
 """
 Escobro: Welcome to Freshman Year! Come find me in the Guidance Office.
@@ -45,6 +45,7 @@ Goal: Escape Mr. Escobar, Ms. Hanson, Mr. Parker. . .
 Escobro: Congratulations on completing Freshman Year! Dont worry - Ill see you next year.
 
 """)
+
 
 class Button:
     def __init__(self, image, x, y, width, height, num):
@@ -187,7 +188,6 @@ while True:
         pygame.display.flip()
         pygame.event.pump()
 
-    p = Nerd(player_img, [0, 0], 0, 2, True, False)
     if characterSelected == "Nerd":
         player_img = pygame.image.load("Sprites/Nerd.png")
         p = Nerd(player_img, [0, 0], 0, 2, True, False)
@@ -210,15 +210,17 @@ while True:
                     sys.exit()
             screen.blit(background, (0, 0))
             if i < 4:
-                screen.blit(pygame.image.load("portal.png"), PORTAL_SWAG[i])
+                screen.blit(pygame.image.load("Portal.png"), PORTAL_SWAG[i])
+                if p.isAtPortal(PORTAL_SWAG[i]):
+                    break
+            elif i == 4:
+                break
             cooldown = swagfont.render(p.text, 1, (242, 100, 68))
             screen.blit(cooldown, (30, SCREEN_HEIGHT - 25))
             p.update(screen)
             e_contact = escobro.update(screen)
             if e_contact:
                 lost = True
-                break
-            if p.isAtPortal():
                 break
             pygame.display.update()
         if lost:
@@ -237,3 +239,16 @@ while True:
             pygame.display.flip()
             pygame.event.pump()
         pygame.time.delay(500)
+
+    if characterSelected == "Nerd":
+        winImage = pygame.image.load("nerd win.jpg")
+    elif characterSelected == "Jock":
+        winImage = pygame.image.load("jock win.jpg")
+    else:
+        winImage = pygame.image.load("prep win.jpg")
+    if not lost:
+        background = winImage
+        screen.blit(background, (0, 0))
+        pygame.display.flip()
+    time.sleep(10)
+    pygame.mixer.music.fadeout(200)

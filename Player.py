@@ -77,10 +77,11 @@ class Player(pygame.sprite.Sprite):  # takes stuff from Sprite
             if self.rect.left > 30:
                 return True
             return False
-	def isAtPortal(self, portalPos):
-		x = self.rect.x
-		y = self.rect.y
-		if math.sqrt((x - portalPos[0])**2 + (y - portalPos[1])**2) <= 3:
-			return True
-		else:
-			return False
+
+    def isAtPortal(self, portalPos):
+        x = self.rect.x
+        y = self.rect.y
+        if math.sqrt((x - portalPos[0]) ** 2 + (y - portalPos[1]) ** 2) <= 20:
+            return True
+        else:
+            return False

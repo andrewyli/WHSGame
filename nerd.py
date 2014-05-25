@@ -6,7 +6,7 @@ from pygame.locals import *
 class Nerd(Player):
     def __init__(self, image, speed, direction, movespeed, visible, sprint):
         Player.__init__(self, image, speed, direction, movespeed, visible, sprint)
-        self.movespeed = 2 * movespeed / 3
+        self.movespeed = 3 * movespeed / 4
         self.text = ""
 		
     def update(self, surface):
