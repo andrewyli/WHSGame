@@ -2,4 +2,8 @@ import pygame
 from pygame.locals import *
 
 class Nerd(Player):
-    def __init__(self, image, x, y, dx, dy, d2x, )
+    def __init__(self, image, speed, direction, movespeed):
+        Player.__init__(self, image, speed, direction, movespeed)
+        self.movespeed = movespeed/2
+        
+
