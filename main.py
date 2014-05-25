@@ -109,21 +109,16 @@ prepButton = pygame.image.load("Buttons/PrepButton.png")
 
 
 def displayStory(text, screen):
-    swagfont = pygame.font.SysFont("trojan", 50)
+    swagfont = pygame.font.SysFont("trajan", 40)
     screen.fill((0, 0, 0))
-    for i in range(256):
-        swag = swagfont.render(text, 1, (255, 255, 255))
-        swag.set_alpha(i)
-        screen.blit(swag, (0, 0))
-        pygame.display.flip()
-        pygame.time.delay(5)
+    lines = text.splitlines()
+	for i in range(len(lines)):
+		line = lines[i]
+		swag = swagfont.render(line, 1, (255, 255, 255))
+		screen.blit(swag, (0, 40*i))
+    pygame.display.flip()
     pygame.time.delay(50)
-    for i in range(256):
-        swag = swagfont.render(text, 1, (255, 255, 255))
-        swag.set_alpha(255 - i)
-        screen.blit(swag, (0, 0))
-        pygame.display.flip()
-        pygame.time.delay(5)
+
 
 
 def classImageChoose(num):
