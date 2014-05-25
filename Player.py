@@ -18,13 +18,13 @@ class Player(pygame.sprite.Sprite):
         self.movespeed = movespeed
 
     def update(self, surface):
-        event = pygame.event.get()
-        self.changeSpeed(event)
+        self.changeSpeed()
         self.move()
         surface.blit(self.image, self.rect)
 
-    def changeSpeed(self, events):
-        for event in events:
+    def changeSpeed(self):
+        event = pygame.event.wait()
+        if 1 == 1:
             if event.type == QUIT:
                 sys.exit()
             # elif event.type == pygame.KEYDOWN:
@@ -48,20 +48,6 @@ class Player(pygame.sprite.Sprite):
                     if self.direction == 270:
                         self.speed[0] = -self.movespeed
                         self.speed[1] = 0
-                if event.key == pygame.K_DOWN:
-                    if self.direction == 180:
-                        self.speed[0] = 0
-                        self.speed[1] = -self.movespeed
-                    if self.direction == 270:
-                        self.speed[0] = self.movespeed
-                        self.speed[1] = 0
-                    if self.direction == 0:
-                        self.speed[0] = 0
-                        self.speed[1] = self.movespeed
-                    if self.direction == 90:
-                        self.speed[0] = -self.movespeed
-                        self.speed[1] = 0
-        pygame.event.clear()
 
     def move(self):
         if (self.canMove()):
