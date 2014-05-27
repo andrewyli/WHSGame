@@ -11,6 +11,7 @@ class Prep(Player):
         Player.__init__(self, image, speed, direction, movespeed, visible, sprint)
         self.text = ""
         self.rect = self.image.get_rect().move(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+        self.movespeed = 2 * movespeed / 3
         self.teleport = True
 
     def update(self, surface):
