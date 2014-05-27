@@ -117,7 +117,7 @@ def displayStory(text, screen):
         swag = swagfont.render(line, 1, (255, 255, 255))
         screen.blit(swag, (0, 18 * i))
     pygame.display.flip()
-    pygame.time.delay(5000)
+    pygame.time.delay(10000)
 
 
 def classImageChoose(num):
