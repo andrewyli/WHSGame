@@ -16,7 +16,7 @@ screen = pygame.display.set_mode(size)
 title = pygame.image.load("title page.png")
 room = pygame.image.load("Room1/Room1.bmp")
 startButton = pygame.image.load("Buttons/Start.png")
-PORTAL_SWAG = ((35, 30), (width - 55, 30), (35, height - 55), (width - 55, height - 55))
+PORTAL_SWAG = ((35, 30), (width - 70, 30), (35, height - 95), (width - 70, height - 95))
 STORY_SWAG = (
 """
 Escobro: Welcome to Freshman Year!\n
@@ -264,5 +264,4 @@ while True:
         screen.blit(background, (0, 0))
         pygame.display.flip()
         time.sleep(10)
-    
     pygame.mixer.music.fadeout(200)
