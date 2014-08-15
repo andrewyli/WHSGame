@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 PACE = 20
 
+#Ms. Shea is better XD
 
 class Escobro(pygame.sprite.Sprite):
     def __init__(self, width, height, target, image):
